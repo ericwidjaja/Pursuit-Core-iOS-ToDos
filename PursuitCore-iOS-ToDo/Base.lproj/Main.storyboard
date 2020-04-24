@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Create Event Controller-->
         <scene sceneID="XRZ-97-CtB">
             <objects>
-                <viewController id="lhx-8q-JGX" sceneMemberID="viewController">
+                <viewController id="lhx-8q-JGX" customClass="CreateEventController" customModule="PursuitCore_iOS_ToDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xAf-ZV-uLW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -18,7 +18,7 @@
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Hsk-lG-vfu">
                                 <rect key="frame" x="47" y="313" width="320" height="216"/>
                             </datePicker>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Event" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="18" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hMA-H3-QJW">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Event" textAlignment="center" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="hMA-H3-QJW">
                                 <rect key="frame" x="10" y="233" width="394" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Cb0-0C-Vdg"/>
@@ -37,6 +37,9 @@
                                 <state key="normal" title="Create Event">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Qd7-sk-581" kind="unwind" unwindAction="addNewEventWithSegue:" id="CTD-dV-wvG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -52,8 +55,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="doG-7D-IYQ"/>
                     </view>
+                    <connections>
+                        <outlet property="createEventTextField" destination="hMA-H3-QJW" id="tVy-Lf-kIV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FMg-c1-FoB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Qd7-sk-581" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="866.66666666666674" y="-587.27678571428567"/>
         </scene>

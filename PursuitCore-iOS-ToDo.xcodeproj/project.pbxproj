@@ -83,8 +83,7 @@
 			children = (
 				DF299BBC24523184004212B5 /* AppDelegate.swift */,
 				DF299BBE24523185004212B5 /* SceneDelegate.swift */,
-				DF299BC024523185004212B5 /* ScheduleListController.swift */,
-				DF66BBAD24526DF100584D9C /* CreateEventController.swift */,
+				DF66BBAF2452708300584D9C /* Controller */,
 				DF299BC224523185004212B5 /* Main.storyboard */,
 				DF299BC52452318B004212B5 /* Assets.xcassets */,
 				DF299BC72452318B004212B5 /* LaunchScreen.storyboard */,
@@ -100,6 +99,15 @@
 				DF299BD52452318C004212B5 /* Info.plist */,
 			);
 			path = "PursuitCore-iOS-ToDoTests";
+			sourceTree = "<group>";
+		};
+		DF66BBAF2452708300584D9C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DF299BC024523185004212B5 /* ScheduleListController.swift */,
+				DF66BBAD24526DF100584D9C /* CreateEventController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
