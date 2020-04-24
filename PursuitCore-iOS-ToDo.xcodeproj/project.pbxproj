@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		DF299BBD24523184004212B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF299BBC24523184004212B5 /* AppDelegate.swift */; };
 		DF299BBF24523185004212B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF299BBE24523185004212B5 /* SceneDelegate.swift */; };
-		DF299BC124523185004212B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF299BC024523185004212B5 /* ViewController.swift */; };
+		DF299BC124523185004212B5 /* ScheduleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF299BC024523185004212B5 /* ScheduleListController.swift */; };
 		DF299BC424523185004212B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF299BC224523185004212B5 /* Main.storyboard */; };
 		DF299BC62452318B004212B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF299BC52452318B004212B5 /* Assets.xcassets */; };
 		DF299BC92452318B004212B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF299BC72452318B004212B5 /* LaunchScreen.storyboard */; };
 		DF299BD42452318C004212B5 /* PursuitCore_iOS_ToDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF299BD32452318C004212B5 /* PursuitCore_iOS_ToDoTests.swift */; };
+		DF66BBAE24526DF100584D9C /* CreateEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66BBAD24526DF100584D9C /* CreateEventController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +31,7 @@
 		DF299BB924523184004212B5 /* PursuitCore-iOS-ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PursuitCore-iOS-ToDo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF299BBC24523184004212B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF299BBE24523185004212B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DF299BC024523185004212B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DF299BC024523185004212B5 /* ScheduleListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleListController.swift; sourceTree = "<group>"; };
 		DF299BC324523185004212B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DF299BC52452318B004212B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF299BC82452318B004212B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +39,7 @@
 		DF299BCF2452318C004212B5 /* PursuitCore-iOS-ToDoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PursuitCore-iOS-ToDoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF299BD32452318C004212B5 /* PursuitCore_iOS_ToDoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PursuitCore_iOS_ToDoTests.swift; sourceTree = "<group>"; };
 		DF299BD52452318C004212B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF66BBAD24526DF100584D9C /* CreateEventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +83,8 @@
 			children = (
 				DF299BBC24523184004212B5 /* AppDelegate.swift */,
 				DF299BBE24523185004212B5 /* SceneDelegate.swift */,
-				DF299BC024523185004212B5 /* ViewController.swift */,
+				DF299BC024523185004212B5 /* ScheduleListController.swift */,
+				DF66BBAD24526DF100584D9C /* CreateEventController.swift */,
 				DF299BC224523185004212B5 /* Main.storyboard */,
 				DF299BC52452318B004212B5 /* Assets.xcassets */,
 				DF299BC72452318B004212B5 /* LaunchScreen.storyboard */,
@@ -200,7 +203,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF299BC124523185004212B5 /* ViewController.swift in Sources */,
+				DF66BBAE24526DF100584D9C /* CreateEventController.swift in Sources */,
+				DF299BC124523185004212B5 /* ScheduleListController.swift in Sources */,
 				DF299BBD24523184004212B5 /* AppDelegate.swift in Sources */,
 				DF299BBF24523185004212B5 /* SceneDelegate.swift in Sources */,
 			);

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ScheduleListController.swift
 //  PursuitCore-iOS-ToDo
 //
 //  Created by Eric Widjaja on 4/23/20.
@@ -8,13 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ScheduleListController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }
 
