@@ -15,6 +15,7 @@
 		DF299BC92452318B004212B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF299BC72452318B004212B5 /* LaunchScreen.storyboard */; };
 		DF299BD42452318C004212B5 /* PursuitCore_iOS_ToDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF299BD32452318C004212B5 /* PursuitCore_iOS_ToDoTests.swift */; };
 		DF66BBAE24526DF100584D9C /* CreateEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66BBAD24526DF100584D9C /* CreateEventController.swift */; };
+		DF66BBB12453A4BB00584D9C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66BBB02453A4BB00584D9C /* Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		DF299BD32452318C004212B5 /* PursuitCore_iOS_ToDoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PursuitCore_iOS_ToDoTests.swift; sourceTree = "<group>"; };
 		DF299BD52452318C004212B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DF66BBAD24526DF100584D9C /* CreateEventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventController.swift; sourceTree = "<group>"; };
+		DF66BBB02453A4BB00584D9C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +85,9 @@
 			children = (
 				DF299BBC24523184004212B5 /* AppDelegate.swift */,
 				DF299BBE24523185004212B5 /* SceneDelegate.swift */,
+				DF66BBB22453A51700584D9C /* Model */,
+				DF66BBB32453A52A00584D9C /* View */,
 				DF66BBAF2452708300584D9C /* Controller */,
-				DF299BC224523185004212B5 /* Main.storyboard */,
 				DF299BC52452318B004212B5 /* Assets.xcassets */,
 				DF299BC72452318B004212B5 /* LaunchScreen.storyboard */,
 				DF299BCA2452318B004212B5 /* Info.plist */,
@@ -108,6 +111,22 @@
 				DF66BBAD24526DF100584D9C /* CreateEventController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		DF66BBB22453A51700584D9C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DF66BBB02453A4BB00584D9C /* Event.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DF66BBB32453A52A00584D9C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DF299BC224523185004212B5 /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +234,7 @@
 				DF299BC124523185004212B5 /* ScheduleListController.swift in Sources */,
 				DF299BBD24523184004212B5 /* AppDelegate.swift in Sources */,
 				DF299BBF24523185004212B5 /* SceneDelegate.swift in Sources */,
+				DF66BBB12453A4BB00584D9C /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
