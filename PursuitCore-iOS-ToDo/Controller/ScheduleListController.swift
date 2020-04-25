@@ -12,9 +12,6 @@ class ScheduleListController: UIViewController {
     
     
     
-    
-    
-    
     //MARK: - IBActions and IBOutlets
     @IBOutlet weak var toDoTableView: UITableView!
     //Data that we are putting inside TableView is -> an array of events, we need to create Event.swift Model File. Why swift? because we are not subclassing anything, we do not to use UIKit that available as in CocoaTouch Class.
@@ -46,6 +43,7 @@ class ScheduleListController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        events = Event.getTestData().sorted { $0.date < $1.date }
         toDoTableView.dataSource = self
     }
 }
@@ -75,7 +73,7 @@ extension ScheduleListController: UITableViewDataSource, UITableViewDelegate {
             // 1. remove item for the data model e.g events
             events.remove(at: indexPath.row) // remove event from events array
             
-            // 2. update the table view
+            // 2. remove event from events array, then update the table view
             tableView.deleteRows(at: [indexPath], with: .automatic)
         default:
             print("......")
