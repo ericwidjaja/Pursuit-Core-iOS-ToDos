@@ -8,20 +8,20 @@
 import UIKit
 
 class CreateEventController: UIViewController {
-
-//MARK: - Properties
+    
+    //MARK: - Properties
     //This is the event that goes back in the sequeway
     var event: Event? //default value is nill
     
     
-//MARK: - IBActions and IBOutlets
-
+    //MARK: - IBActions and IBOutlets
+    
     @IBOutlet weak var createEventTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
-        
-        
-        
-//MARK: - Functions
+    
+    
+    
+    //MARK: - Functions
     @IBAction func datePickerSelected(sender: UIDatePicker) {
         //whenever the date is selected, update the event's date
         event?.date = sender.date
@@ -29,7 +29,7 @@ class CreateEventController: UIViewController {
     }
     
     
-//MARK: - Lifecycle
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         //set the VC as the delegate for the textField
@@ -37,7 +37,7 @@ class CreateEventController: UIViewController {
         
         //instantiate a default value for 'event' ---> so it wont be nil anymore
         event = Event(name: "6.1 Swift Review", date: Date()) //Date()->automatically create current date when the app is run.
-  
+        
     }
 }
 

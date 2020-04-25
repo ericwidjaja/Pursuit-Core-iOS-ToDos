@@ -9,28 +9,28 @@
 import UIKit
 
 class ScheduleListController: UIViewController {
-
-
     
     
     
     
-//MARK: - IBActions and IBOutlets
+    
+    
+    //MARK: - IBActions and IBOutlets
     @IBOutlet weak var toDoTableView: UITableView!
     //Data that we are putting inside TableView is -> an array of events, we need to create Event.swift Model File. Why swift? because we are not subclassing anything, we do not to use UIKit that available as in CocoaTouch Class.
-//MARK: - Internal Properties
+    //MARK: - Internal Properties
     var events = [Event]()
-/*var events = [Event]() {
-        //        didSet {//property observer, whenever there's new data, it will reload and return the data into tableview
-        //            toDoTableView.reloadData()}
-        //BUT We are using different method, we need to insert either on top or bottom of the tblView
-    }
-*/
+    /*var events = [Event]() {
+     //        didSet {//property observer, whenever there's new data, it will reload and return the data into tableview
+     //            toDoTableView.reloadData()}
+     //BUT We are using different method, we need to insert either on top or bottom of the tblView
+     }
+     */
     @IBAction func addNewEvent(segue: UIStoryboardSegue) {
         // get reference to the CreateEventController, using sequeway property from addNewEvent. where we are coming from? so use segue.source and guard them
         guard let createEventController = segue.source as? CreateEventController,
             let createdEvent = createEventController.event else {//if we do not get CreateEventController we failed
-            fatalError("Failed to Access CreateEventController")
+                fatalError("Failed to Access CreateEventController")
         }
         //After getting the values of the variables, we can insert this new created event into the events array at index 0 or the top of the array
         events.insert(createdEvent, at: 0)
@@ -40,10 +40,10 @@ class ScheduleListController: UIViewController {
         toDoTableView.insertRows(at: [indexPath], with: .automatic)
     }
     
-//MARK: - Regular Functions
-
+    //MARK: - Regular Functions
     
-//MARK: - Lifecycle
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         toDoTableView.dataSource = self
@@ -64,6 +64,21 @@ extension ScheduleListController: UITableViewDataSource, UITableViewDelegate {
         cell.detailTextLabel?.text = selectedEvent.date.description
         return cell
     }
-    
-    
+    //deleting rows in a table view
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .insert:
+            // only gets called if "insertion control" exist and gets selected
+            print("inserting....")
+        case .delete:
+            print("deleting..")
+            // 1. remove item for the data model e.g events
+            events.remove(at: indexPath.row) // remove event from events array
+            
+            // 2. update the table view
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        default:
+            print("......")
+        }
+    }
 }
