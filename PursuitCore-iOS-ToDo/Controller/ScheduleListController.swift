@@ -32,8 +32,12 @@ class ScheduleListController: UIViewController {
             let createdEvent = createEventController.event else {//if we do not get CreateEventController we failed
             fatalError("Failed to Access CreateEventController")
         }
-        //After getting the values of the variables, we can insert this new created event into the events array
-        events
+        //After getting the values of the variables, we can insert this new created event into the events array at index 0 or the top of the array
+        events.insert(createdEvent, at: 0)
+        //created an indexPath for the new event's path -> to be inserted into the tableView
+        let indexPath = IndexPath(row: 0, section: 0)
+        //show the new event the indexPath into tableView
+        toDoTableView.insertRows(at: [indexPath], with: .automatic)
     }
     
 //MARK: - Regular Functions
@@ -42,17 +46,22 @@ class ScheduleListController: UIViewController {
 //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        toDoTableView.dataSource = self
     }
 }
 
 //MARK: - Extension
 extension ScheduleListController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return events.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = toDoTableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
+        let selectedEvent = events[indexPath.row]
+        cell.textLabel?.text = selectedEvent.name
+        cell.detailTextLabel?.text = selectedEvent.date.description
         return cell
     }
     

@@ -34,6 +34,9 @@ class CreateEventController: UIViewController {
         super.viewDidLoad()
         //set the VC as the delegate for the textField
         createEventTextField.delegate = self
+        
+        //instantiate a default value for 'event' ---> so it wont be nil anymore
+        event = Event(name: "6.1 Swift Review", date: Date()) //Date()->automatically create current date when the app is run.
   
     }
 }
