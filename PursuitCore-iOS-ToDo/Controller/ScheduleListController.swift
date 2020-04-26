@@ -29,11 +29,13 @@ class ScheduleListController: UIViewController {
             let createdEvent = createEventController.event else {//if we do not get CreateEventController we failed
                 fatalError("Failed to Access CreateEventController")
         }
-        //After getting the values of the variables, we can insert this new created event into the events array at index 0 or the top of the array
+        //After getting the values of the variables, we can insert this new created event into the events array at index 0 or the top of the array.
+        //1. update data model e.g.update the events array
         events.insert(createdEvent, at: 0)
         //created an indexPath for the new event's path -> to be inserted into the tableView
         let indexPath = IndexPath(row: 0, section: 0)
         //show the new event the indexPath into tableView
+        //2. we need to update the tableview
         toDoTableView.insertRows(at: [indexPath], with: .automatic)
     }
     
@@ -73,7 +75,7 @@ extension ScheduleListController: UITableViewDataSource, UITableViewDelegate {
             // 1. remove item for the data model e.g events
             events.remove(at: indexPath.row) // remove event from events array
             
-            // 2. remove event from events array, then update the table view
+            // 2. then update the table view
             tableView.deleteRows(at: [indexPath], with: .automatic)
         default:
             print("......")
