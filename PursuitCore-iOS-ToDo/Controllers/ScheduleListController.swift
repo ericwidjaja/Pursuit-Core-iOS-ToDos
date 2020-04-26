@@ -34,6 +34,13 @@ class ScheduleListController: UIViewController {
      }
      */
     
+    lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, MMM, d, yyyy, hh:mm a"
+        formatter.timeZone = .current
+        return formatter
+    }()
+    
     
     @IBAction func addNewEvent(segue: UIStoryboardSegue) {
         // get reference to the CreateEventController, using sequeway property from addNewEvent. where we are coming from? so use segue.source and guard them
@@ -57,10 +64,12 @@ class ScheduleListController: UIViewController {
     //MARK: - Regular Functions
     
     
+    
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        events = Event.getTestData().sorted { $0.date < $1.date }
+//        events = Event.getTestData().sorted { $0.date < $1.date }
         toDoTableView.dataSource = self
         toDoTableView.delegate = self
     }
