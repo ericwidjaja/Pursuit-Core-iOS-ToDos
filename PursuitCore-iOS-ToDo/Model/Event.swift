@@ -11,12 +11,12 @@ import Foundation
 struct Event {
     var name: String
     var date: Date
-    var isItDone: Bool
+    var isDone: Bool
     
     init(name: String, date: Date, isItDone: Bool = false) {
         self.name = name
         self.date = date
-        self.isItDone = isItDone
+        self.isDone = isItDone
     }
     
     static func getTestData() -> [Event] {

@@ -15,19 +15,26 @@ enum SectionTitle: String, CaseIterable {
 
 class ScheduleListController: UIViewController {
     
-    
-    
     //MARK: - IBActions and IBOutlets
     @IBOutlet weak var toDoTableView: UITableView!
     //Data that we are putting inside TableView is -> an array of events, we need to create Event.swift Model File. Why swift? because we are not subclassing anything, we do not to use UIKit that available as in CocoaTouch Class.
+    
     //MARK: - Internal Properties
-    private var events = Array(repeating: [Event](), count: 2)
+    var events = Array(repeating: [Event](), count: 2) {
+        didSet {
+            DispatchQueue.main.async {
+                self.toDoTableView.reloadData()
+            }
+        }
+    }
     /*var events = [Event]() {
      //        didSet {//property observer, whenever there's new data, it will reload and return the data into tableview
      //            toDoTableView.reloadData()}
      //BUT We are using different method, we need to insert either on top or bottom of the tblView
      }
      */
+    
+    
     @IBAction func addNewEvent(segue: UIStoryboardSegue) {
         // get reference to the CreateEventController, using sequeway property from addNewEvent. where we are coming from? so use segue.source and guard them
         guard let createEventController = segue.source as? CreateEventController,
@@ -87,11 +94,25 @@ extension ScheduleListController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return SectionTitle.allCases[section].rawValue
-        //        return section == 0 ? "To Do Tasks" : "Done Task"
+        //        return SectionTitle.allCases[section].rawValue
+        return section == 0 ? "To Do Tasks" : "Done Task"
     }
     
-    //deleting rows in a table view
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var event = events[indexPath.section][indexPath.row]
+        event.isDone.toggle()
+        events[indexPath.section].remove(at: indexPath.row)
+        
+        if event.isDone {
+            let idxPath = IndexPath(row: events[1].count, section: 1) //Section  1 = DoneTask
+            events[1].insert(event, at: idxPath.row)
+        } else {
+            let idxPath = IndexPath(row: events[0].count, section: 0) //Section 0 = Not Done
+            events[0].insert(event, at: idxPath.row)
+        }
+    }
+    
+    //    deleting rows in a table view
     //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     //        switch editingStyle {
     //        case .insert:
@@ -101,7 +122,7 @@ extension ScheduleListController: UITableViewDataSource, UITableViewDelegate {
     //            print("deleting..")
     //            // 1. remove item for the data model e.g events
     //            events.remove(at: indexPath.row) // remove event from events array
-    //            
+    //
     //            // 2. then update the table view
     //            tableView.deleteRows(at: [indexPath], with: .automatic)
     //        default:
