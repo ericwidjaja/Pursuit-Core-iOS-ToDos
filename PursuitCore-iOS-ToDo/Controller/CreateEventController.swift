@@ -36,7 +36,7 @@ class CreateEventController: UIViewController {
         createEventTextField.delegate = self
         
         //instantiate a default value for 'event' ---> so it wont be nil anymore
-        event = Event(name: "6.1 Swift Review", date: Date()) //Date()->automatically create current date when the app is run.
+        event = Event(name: "6.1 Swift Review", date: Date(), isItDone: false) //Date()->automatically create current date when the app is run.
         
     }
 }
@@ -46,10 +46,8 @@ extension CreateEventController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //dismiss the keyboard
         textField.resignFirstResponder()
-        event?.name = textField.text ?? "No Event Name yet"
-        
-        
-        //
+        event?.name = createEventTextField.text ?? "No Event Name yet"
+
         return true
     }
 }

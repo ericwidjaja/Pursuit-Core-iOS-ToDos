@@ -21,7 +21,7 @@ class ScheduleListController: UIViewController {
     @IBOutlet weak var toDoTableView: UITableView!
     //Data that we are putting inside TableView is -> an array of events, we need to create Event.swift Model File. Why swift? because we are not subclassing anything, we do not to use UIKit that available as in CocoaTouch Class.
     //MARK: - Internal Properties
-    var events = [Event]()
+    private var events = Array(repeating: [Event](), count: 2)
     /*var events = [Event]() {
      //        didSet {//property observer, whenever there's new data, it will reload and return the data into tableview
      //            toDoTableView.reloadData()}
@@ -36,9 +36,12 @@ class ScheduleListController: UIViewController {
         }
         //After getting the values of the variables, we can insert this new created event into the events array at index 0 or the top of the array.
         //1. update data model e.g.update the events array
-        events.insert(createdEvent, at: 0)
+        //        events[0].append(createdEvent)
+        //        events[0].insert(createdEvent, at: 0)
+        //events.insert(createdEvent, at: 0)
         //created an indexPath for the new event's path -> to be inserted into the tableView
-        let indexPath = IndexPath(row: 0, section: 0)
+        let indexPath = IndexPath(row: events[0].count, section: 0)
+        events[0].append(createdEvent)
         //show the new event the indexPath into tableView
         //2. we need to update the tableview
         toDoTableView.insertRows(at: [indexPath], with: .automatic)
@@ -50,40 +53,59 @@ class ScheduleListController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        events = Event.getTestData().sorted { $0.date < $1.date }
+        //        events = Event.getTestData().sorted { $0.date < $1.date }
         toDoTableView.dataSource = self
+        toDoTableView.delegate = self
     }
 }
 
 //MARK: - Extension
 extension ScheduleListController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+        return events[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = toDoTableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
-        let selectedEvent = events[indexPath.row]
+        let selectedEvent = events[indexPath.section][indexPath.row]
         cell.textLabel?.text = selectedEvent.name
         cell.detailTextLabel?.text = selectedEvent.date.description
         return cell
     }
-    //deleting rows in a table view
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        switch editingStyle {
-        case .insert:
-            // only gets called if "insertion control" exist and gets selected
-            print("inserting....")
-        case .delete:
-            print("deleting..")
-            // 1. remove item for the data model e.g events
-            events.remove(at: indexPath.row) // remove event from events array
-            
-            // 2. then update the table view
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        default:
-            print("......")
-        }
+    
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return events.count
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return SectionTitle.allCases[section].rawValue
+        //        return section == 0 ? "To Do Tasks" : "Done Task"
+    }
+    
+    //deleting rows in a table view
+    //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    //        switch editingStyle {
+    //        case .insert:
+    //            // only gets called if "insertion control" exist and gets selected
+    //            print("inserting....")
+    //        case .delete:
+    //            print("deleting..")
+    //            // 1. remove item for the data model e.g events
+    //            events.remove(at: indexPath.row) // remove event from events array
+    //            
+    //            // 2. then update the table view
+    //            tableView.deleteRows(at: [indexPath], with: .automatic)
+    //        default:
+    //            print("......")
+    //        }
+    //    }
 }
