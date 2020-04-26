@@ -1,6 +1,5 @@
 //  CreateEventController.swift
 //  PursuitCore-iOS-ToDo
-//
 //  Created by Eric Widjaja on 4/23/20.
 //  Copyright © 2020 ericW. All rights reserved.
 //
@@ -36,8 +35,7 @@ class CreateEventController: UIViewController {
         createEventTextField.delegate = self
         
         //instantiate a default value for 'event' ---> so it wont be nil anymore
-        event = Event(name: "6.1 Swift Review", date: Date(), isItDone: false) //Date()->automatically create current date when the app is run.
-        
+        event = Event(name: "6.1 Swift Review", date: Date(), isItDone: false)
     }
 }
 
@@ -47,7 +45,7 @@ extension CreateEventController: UITextFieldDelegate {
         //dismiss the keyboard
         textField.resignFirstResponder()
         event?.name = createEventTextField.text ?? "No Event Name yet"
-
+        
         return true
     }
 }

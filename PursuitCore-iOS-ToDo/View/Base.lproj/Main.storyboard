@@ -34,7 +34,7 @@
                                 <rect key="frame" x="147" y="544" width="120" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="KGw-2C-AZI"/>
-                                    <constraint firstAttribute="width" constant="120" id="Mfm-G7-lkh"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="Mfm-G7-lkh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Create Event">
@@ -68,7 +68,7 @@
             </objects>
             <point key="canvasLocation" x="866.66666666666674" y="-587.27678571428567"/>
         </scene>
-        <!--TO-DOs LIST-->
+        <!--TO-DOs  LIST-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ScheduleListController" customModule="PursuitCore_iOS_ToDo" customModuleProvider="target" sceneMemberID="viewController">
@@ -107,7 +107,8 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="eKC-5l-C7h" secondAttribute="bottom" id="E7L-4T-1zr"/>
                             <constraint firstItem="eKC-5l-C7h" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Xun-9v-o8w"/>
@@ -116,9 +117,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="TO-DOs LIST" id="Zqq-pS-9u6">
+                    <navigationItem key="navigationItem" title="TO-DOs  LIST" largeTitleDisplayMode="always" id="Zqq-pS-9u6">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="IET-6f-SBF">
-                            <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="lhx-8q-JGX" kind="presentation" id="wdq-Bf-UG9"/>
                             </connections>
@@ -140,6 +141,14 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="UqV-A6-OHA">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

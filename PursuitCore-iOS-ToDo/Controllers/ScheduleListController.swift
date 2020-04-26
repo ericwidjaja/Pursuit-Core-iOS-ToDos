@@ -1,10 +1,7 @@
-//
 //  ScheduleListController.swift
 //  PursuitCore-iOS-ToDo
-//
 //  Created by Eric Widjaja on 4/23/20.
 //  Copyright © 2020 ericW. All rights reserved.
-//
 
 import UIKit
 
@@ -27,37 +24,24 @@ class ScheduleListController: UIViewController {
             }
         }
     }
-    /*var events = [Event]() {
-     //        didSet {//property observer, whenever there's new data, it will reload and return the data into tableview
-     //            toDoTableView.reloadData()}
-     //BUT We are using different method, we need to insert either on top or bottom of the tblView
-     }
-     */
-    
-    lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, MMM, d, yyyy, hh:mm a"
-        formatter.timeZone = .current
-        return formatter
-    }()
     
     
     @IBAction func addNewEvent(segue: UIStoryboardSegue) {
-        // get reference to the CreateEventController, using sequeway property from addNewEvent. where we are coming from? so use segue.source and guard them
+        // get reference to the CreateEventController, using sequeway property from addNewEvent.
         guard let createEventController = segue.source as? CreateEventController,
-            let createdEvent = createEventController.event else {//if we do not get CreateEventController we failed
+            let createdEvent = createEventController.event
+            else {
                 fatalError("Failed to Access CreateEventController")
         }
-        //After getting the values of the variables, we can insert this new created event into the events array at index 0 or the top of the array.
-        //1. update data model e.g.update the events array
-        //        events[0].append(createdEvent)
-        //        events[0].insert(createdEvent, at: 0)
-        //events.insert(createdEvent, at: 0)
-        //created an indexPath for the new event's path -> to be inserted into the tableView
+        // persist (save) event to documents directory
+        do {
+            try PersistenceHelper.save(event: createdEvent)
+        } catch {
+            print("error saving event with error: \(error)")
+        }
+        
         let indexPath = IndexPath(row: events[0].count, section: 0)
         events[0].append(createdEvent)
-        //show the new event the indexPath into tableView
-        //2. we need to update the tableview
         toDoTableView.insertRows(at: [indexPath], with: .automatic)
     }
     
@@ -69,7 +53,6 @@ class ScheduleListController: UIViewController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        events = Event.getTestData().sorted { $0.date < $1.date }
         toDoTableView.dataSource = self
         toDoTableView.delegate = self
         // print path to documents directory
@@ -93,7 +76,6 @@ extension ScheduleListController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
     }
@@ -102,11 +84,9 @@ extension ScheduleListController: UITableViewDataSource, UITableViewDelegate {
         return events.count
     }
     
-    
-    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         //        return SectionTitle.allCases[section].rawValue
-        return section == 0 ? "To Do Tasks" : "Done Task"
+        return section == 0 ? "To Do Tasks" : "Completed Tasks"
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -122,22 +102,4 @@ extension ScheduleListController: UITableViewDataSource, UITableViewDelegate {
             events[0].insert(event, at: idxPath.row)
         }
     }
-    
-    //    deleting rows in a table view
-    //    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    //        switch editingStyle {
-    //        case .insert:
-    //            // only gets called if "insertion control" exist and gets selected
-    //            print("inserting....")
-    //        case .delete:
-    //            print("deleting..")
-    //            // 1. remove item for the data model e.g events
-    //            events.remove(at: indexPath.row) // remove event from events array
-    //
-    //            // 2. then update the table view
-    //            tableView.deleteRows(at: [indexPath], with: .automatic)
-    //        default:
-    //            print("......")
-    //        }
-    //    }
 }

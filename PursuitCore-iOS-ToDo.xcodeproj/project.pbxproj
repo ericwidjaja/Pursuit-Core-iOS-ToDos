@@ -85,12 +85,12 @@
 		DF299BBB24523184004212B5 /* PursuitCore-iOS-ToDo */ = {
 			isa = PBXGroup;
 			children = (
+				DF66BBB92455E41E00584D9C /* Data Persistence */,
 				DF66BBB22453A51700584D9C /* Model */,
 				DF66BBB32453A52A00584D9C /* View */,
 				DF66BBAF2452708300584D9C /* Controllers */,
 				DF66BBB62455D6D700584D9C /* Supporting Files */,
 				DF299BCA2452318B004212B5 /* Info.plist */,
-				DF66BBB72455D79F00584D9C /* FileManager+Extensions.swift */,
 			);
 			path = "PursuitCore-iOS-ToDo";
 			sourceTree = "<group>";
@@ -134,10 +134,20 @@
 			children = (
 				DF299BBC24523184004212B5 /* AppDelegate.swift */,
 				DF299BBE24523185004212B5 /* SceneDelegate.swift */,
+				DF66BBBC24563C7100584D9C /* Date+Extensions.swift */,
 				DF299BC52452318B004212B5 /* Assets.xcassets */,
 				DF299BC72452318B004212B5 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DF66BBB92455E41E00584D9C /* Data Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				DF66BBB72455D79F00584D9C /* FileManager+Extensions.swift */,
+				DF66BBBA2455E4A700584D9C /* PersistenceHelper.swift */,
+			);
+			path = "Data Persistence";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,8 +252,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF66BBAE24526DF100584D9C /* CreateEventController.swift in Sources */,
+				DF66BBBD24563C7100584D9C /* Date+Extensions.swift in Sources */,
 				DF299BC124523185004212B5 /* ScheduleListController.swift in Sources */,
 				DF299BBD24523184004212B5 /* AppDelegate.swift in Sources */,
+				DF66BBBB2455E4A700584D9C /* PersistenceHelper.swift in Sources */,
 				DF299BBF24523185004212B5 /* SceneDelegate.swift in Sources */,
 				DF66BBB12453A4BB00584D9C /* Event.swift in Sources */,
 				DF66BBB82455D79F00584D9C /* FileManager+Extensions.swift in Sources */,
