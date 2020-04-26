@@ -246,6 +246,7 @@
 				DF299BBD24523184004212B5 /* AppDelegate.swift in Sources */,
 				DF299BBF24523185004212B5 /* SceneDelegate.swift in Sources */,
 				DF66BBB12453A4BB00584D9C /* Event.swift in Sources */,
+				DF66BBB82455D79F00584D9C /* FileManager+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

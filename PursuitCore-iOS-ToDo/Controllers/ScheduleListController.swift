@@ -72,6 +72,8 @@ class ScheduleListController: UIViewController {
 //        events = Event.getTestData().sorted { $0.date < $1.date }
         toDoTableView.dataSource = self
         toDoTableView.delegate = self
+        // print path to documents directory
+        print(FileManager.getDocumentsDirectory())
     }
 }
 
