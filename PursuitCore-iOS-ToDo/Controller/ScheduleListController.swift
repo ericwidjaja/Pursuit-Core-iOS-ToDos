@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum SectionTitle: String, CaseIterable {
+    case toDoTasks = "toDoTasks"
+    case doneTasks = "doneTasks"
+}
+
 class ScheduleListController: UIViewController {
     
     
