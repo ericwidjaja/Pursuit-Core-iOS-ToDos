@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+extension Date {
+    func formattedDateString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE, MMM d, yyyy, hh:mm a"
+        formatter.timeZone = .current
+        return formatter.string(from: self)
+    }
+}
+

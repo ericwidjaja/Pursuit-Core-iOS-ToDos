@@ -72,7 +72,7 @@ extension ScheduleListController: UITableViewDataSource, UITableViewDelegate {
         let cell = toDoTableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
         let selectedEvent = events[indexPath.section][indexPath.row]
         cell.textLabel?.text = selectedEvent.name
-        cell.detailTextLabel?.text = selectedEvent.date.description
+        cell.detailTextLabel?.text = selectedEvent.date.formattedDateString()
         return cell
     }
     

@@ -17,6 +17,8 @@
 		DF66BBAE24526DF100584D9C /* CreateEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66BBAD24526DF100584D9C /* CreateEventController.swift */; };
 		DF66BBB12453A4BB00584D9C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66BBB02453A4BB00584D9C /* Event.swift */; };
 		DF66BBB82455D79F00584D9C /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66BBB72455D79F00584D9C /* FileManager+Extensions.swift */; };
+		DF66BBBB2455E4A700584D9C /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66BBBA2455E4A700584D9C /* PersistenceHelper.swift */; };
+		DF66BBBD24563C7100584D9C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66BBBC24563C7100584D9C /* Date+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		DF66BBAD24526DF100584D9C /* CreateEventController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventController.swift; sourceTree = "<group>"; };
 		DF66BBB02453A4BB00584D9C /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		DF66BBB72455D79F00584D9C /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
+		DF66BBBA2455E4A700584D9C /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
+		DF66BBBC24563C7100584D9C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
