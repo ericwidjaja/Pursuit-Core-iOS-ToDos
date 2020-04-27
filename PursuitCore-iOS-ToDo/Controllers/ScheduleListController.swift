@@ -5,16 +5,11 @@
 
 import UIKit
 
-enum SectionTitle: String, CaseIterable {
-    case toDoTasks = "toDoTasks"
-    case doneTasks = "doneTasks"
-}
-
 class ScheduleListController: UIViewController {
     
     //MARK: - IBActions and IBOutlets
     @IBOutlet weak var toDoTableView: UITableView!
-    //Data that we are putting inside TableView is -> an array of events, we need to create Event.swift Model File. Why swift? because we are not subclassing anything, we do not to use UIKit that available as in CocoaTouch Class.
+    
     
     //MARK: - Internal Properties
     var events = Array(repeating: [Event](), count: 2) {
@@ -27,10 +22,9 @@ class ScheduleListController: UIViewController {
     
     
     @IBAction func addNewEvent(segue: UIStoryboardSegue) {
-        // get reference to the CreateEventController, using sequeway property from addNewEvent.
+        // get reference to the CreateEventController, using sequeway property from addNewEvent. where we are coming from? so use segue.source and guard them
         guard let createEventController = segue.source as? CreateEventController,
-            let createdEvent = createEventController.event
-            else {
+            let createdEvent = createEventController.event else {
                 fatalError("Failed to Access CreateEventController")
         }
         // persist (save) event to documents directory
@@ -39,9 +33,12 @@ class ScheduleListController: UIViewController {
         } catch {
             print("error saving event with error: \(error)")
         }
-        
+        //1. update data model e.g.update the events array
+        //created an indexPath for the new event's path -> to be inserted into the tableView
         let indexPath = IndexPath(row: events[0].count, section: 0)
         events[0].append(createdEvent)
+        //show the new event the indexPath into tableView
+        //2. we need to update the tableview
         toDoTableView.insertRows(at: [indexPath], with: .automatic)
     }
     
@@ -76,6 +73,7 @@ extension ScheduleListController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
     }
@@ -85,8 +83,7 @@ extension ScheduleListController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        //        return SectionTitle.allCases[section].rawValue
-        return section == 0 ? "To Do Tasks" : "Completed Tasks"
+        return section == 0 ? "Outstanding Tasks" : "Completed Tasks"
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

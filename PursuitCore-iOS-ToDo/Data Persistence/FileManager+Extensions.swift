@@ -6,15 +6,10 @@
 
 import Foundation
 
-public enum Directory {
-  case documentsDirectory
-  case cachesDirectory
-}
-
 extension FileManager {
     
     static func getDocumentsDirectory() -> URL { 
-        // returns a URL to the documents directory for the app
+        
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
     

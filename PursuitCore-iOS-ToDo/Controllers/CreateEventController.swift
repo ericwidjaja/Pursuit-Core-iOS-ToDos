@@ -12,7 +12,6 @@ class CreateEventController: UIViewController {
     //This is the event that goes back in the sequeway
     var event: Event? //default value is nill
     
-    
     //MARK: - IBActions and IBOutlets
     
     @IBOutlet weak var createEventTextField: UITextField!
