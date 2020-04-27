@@ -1,39 +1,52 @@
 //  PersistenceHelper.swift
 //  PursuitCore-iOS-ToDo
-//  Created by Eric Widjaja on 4/26/20.
-//  Copyright © 2020 ericW. All rights reserved.
+//  Created by Eric Widjaja on 10/24/19.
+//  Copyright © 2019 David Rifkin. All rights reserved.
 
 import Foundation
 
-enum DataPersistenceError: Error {
-    case savingError(Error)
-    case fileDoesNotExist(String)
-    case noData
-    case decodingError(Error)
-    case deletingError(Error)
-}
-
-class PersistenceHelper {
-    
-    private static var events = [Event]()
-    private static let filename = "todos.plist"
-    
-    // Create - save an item to document's directory
-    static func save(event: Event) throws {
-        
-        //get url path to the file that the Event will be saved to
-        let url = FileManager.pathToDocumentsDirectory(with: filename)
-        
-        // append new event to the events array
-        events.append(event)
-        
-        // events array will be object being converted to Data. Use the Data object and write/save it to Documents directory
-        do {
-            let data = try PropertyListEncoder().encode(events)
-            try data.write(to: url, options: .atomic)
-        } catch {
-            throw DataPersistenceError.savingError(error)
-            
+struct PersistenceHelper<T: Codable> {
+    func getObjects() throws -> [T] {
+        guard let data = FileManager.default.contents(atPath: url.path) else {
+            return []
         }
+        return try PropertyListDecoder().decode([T].self, from: data)
+    }
+    
+    func save(newElement: T) throws {
+        var elements = try getObjects()
+        elements.insert(newElement, at: 0)
+        try replace(elements: elements)
+    }
+    func saveArray(newElement:[T]) throws {
+        try replace(elements: newElement)
+    }
+    
+    func replace(elements: [T]) throws {
+        let serializedData = try PropertyListEncoder().encode(elements)
+        try serializedData.write(to: url, options: Data.WritingOptions.atomic)
+    }
+    
+    func saveAtSpecificIndex(newElement: T, index: Int) throws {
+        var elements = try getObjects()
+        elements.insert(newElement, at: index)
+        try replace(elements: elements)
+        
+    }
+    
+    init(fileName: String){
+        self.fileName = fileName
+    }
+    
+    private let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    
+    private func filePathFromDocumentsDirectory(name: String) -> URL {
+        return documentsDirectory.appendingPathComponent(name)
+    }
+    
+    private let fileName: String
+    
+    private var url: URL {
+        return filePathFromDocumentsDirectory(name: fileName)
     }
 }

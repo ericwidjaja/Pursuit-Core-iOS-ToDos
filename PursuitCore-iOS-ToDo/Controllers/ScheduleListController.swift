@@ -5,6 +5,7 @@
 
 import UIKit
 
+
 class ScheduleListController: UIViewController {
     
     //MARK: - IBActions and IBOutlets
@@ -12,13 +13,15 @@ class ScheduleListController: UIViewController {
     
     
     //MARK: - Internal Properties
-    var events = Array(repeating: [Event](), count: 2) {
+    private var events = Array(repeating: [Event](), count: 2) {
         didSet {
-            DispatchQueue.main.async {
-                self.toDoTableView.reloadData()
-            }
+            do { try EventPersistenceManager.manager.saveToDoListArray(events: events[0] + events[1])
+            } catch {
+                print(error)}
+            toDoTableView.isUserInteractionEnabled = true
         }
     }
+    
     
     
     @IBAction func addNewEvent(segue: UIStoryboardSegue) {
@@ -27,12 +30,13 @@ class ScheduleListController: UIViewController {
             let createdEvent = createEventController.event else {
                 fatalError("Failed to Access CreateEventController")
         }
-        // persist (save) event to documents directory
-        do {
-            try PersistenceHelper.save(event: createdEvent)
-        } catch {
-            print("error saving event with error: \(error)")
-        }
+        //        // persist (save) event to documents directory
+        //        do {
+        //            try PersistenceHelper.Type
+        ////            try PersistenceHelper.save(newElement: createdEvent)
+        //        } catch {
+        //            print("error saving event with error: \(error)")
+        //        }
         //1. update data model e.g.update the events array
         //created an indexPath for the new event's path -> to be inserted into the tableView
         let indexPath = IndexPath(row: events[0].count, section: 0)
@@ -44,16 +48,42 @@ class ScheduleListController: UIViewController {
     
     //MARK: - Regular Functions
     
-    
-    
+    private func loadSavedEvents() {
+        
+        do {
+            _ = try EventPersistenceManager.manager.getSavedTasks().forEach { (event) in
+                
+                if event.isItDone() == false {
+                    events[0].append(event)
+
+                } else {
+                    events[1].append(event)
+                
+                }
+            }
+        } catch {
+            print(error)
+        }
+        toDoTableView.reloadData()
+    }
+
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         toDoTableView.dataSource = self
         toDoTableView.delegate = self
-        // print path to documents directory
         print(FileManager.getDocumentsDirectory())
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        toDoTableView.backgroundColor = .clear
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadSavedEvents()
     }
 }
 

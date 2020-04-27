@@ -34,7 +34,7 @@ class CreateEventController: UIViewController {
         createEventTextField.delegate = self
         
         //instantiate a default value for 'event' ---> so it wont be nil anymore
-        event = Event(name: "6.1 Swift Review", date: Date(), isItDone: false)
+        event = Event(name: "6.1 Swift Review", date: Date(), isDone: false)
     }
 }
 

@@ -19,6 +19,7 @@
 		DF66BBB82455D79F00584D9C /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66BBB72455D79F00584D9C /* FileManager+Extensions.swift */; };
 		DF66BBBB2455E4A700584D9C /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66BBBA2455E4A700584D9C /* PersistenceHelper.swift */; };
 		DF66BBBD24563C7100584D9C /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66BBBC24563C7100584D9C /* Date+Extensions.swift */; };
+		DF66BBC1245705EA00584D9C /* EventPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66BBC0245705EA00584D9C /* EventPersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		DF66BBB72455D79F00584D9C /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		DF66BBBA2455E4A700584D9C /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
 		DF66BBBC24563C7100584D9C /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		DF66BBC0245705EA00584D9C /* EventPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			children = (
 				DF66BBB72455D79F00584D9C /* FileManager+Extensions.swift */,
 				DF66BBBA2455E4A700584D9C /* PersistenceHelper.swift */,
+				DF66BBC0245705EA00584D9C /* EventPersistenceManager.swift */,
 			);
 			path = "Data Persistence";
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF66BBC1245705EA00584D9C /* EventPersistenceManager.swift in Sources */,
 				DF66BBAE24526DF100584D9C /* CreateEventController.swift in Sources */,
 				DF66BBBD24563C7100584D9C /* Date+Extensions.swift in Sources */,
 				DF299BC124523185004212B5 /* ScheduleListController.swift in Sources */,
