@@ -3,12 +3,11 @@
 //  Created by Eric Widjaja on 4/26/20.
 //  Copyright © 2020 ericW. All rights reserved.
 //
-
 import Foundation
 
 extension FileManager {
     
-    static func getDocumentsDirectory() -> URL { 
+    static func getDocumentsDirectory() -> URL {
         
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
